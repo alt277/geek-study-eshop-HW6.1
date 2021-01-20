@@ -24,11 +24,14 @@
 
     <modules>
         <module>shop-database</module>
+        <module>spring-cloud-config</module>
         <module>shop-picture-service</module>
         <module>shop-picture-service-app</module>
+        <module>spring-eureka-server</module>
+        <module>spring-gateway</module>
         <module>shop-admin-ui</module>
         <module>shop-ui</module>
-        <module>spring-cloud-config</module>
+
     </modules>
 
     <dependencyManagement>
