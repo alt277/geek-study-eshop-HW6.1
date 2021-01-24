@@ -43,7 +43,7 @@ public class CategoryControllerTest {
 
     @WithMockUser(value = "admin", password = "admin", roles = {"ADMIN"})
     @Test
-    public void testCategoryCreation() throws Exception {
+    public void testCategoryEdit() throws Exception {
         Category category = categoryRepository.save(new Category("Jeans"));
         mvc.perform(get("/category/" +category.getId()+"/edit")
                 .contentType(MediaType.APPLICATION_FORM_URLENCODED)
@@ -81,5 +81,22 @@ public class CategoryControllerTest {
         Optional<Category> opt = categoryRepository.findOne(Example.of(new Category("Jeans")));
         assertTrue(opt.isEmpty());
 
+    }
+    @WithMockUser(value = "admin", password = "admin", roles = {"ADMIN"})
+    @Test
+    public void testCategoryCreation() throws Exception {
+        mvc.perform(post("/category")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("id", "-1")
+                .param("name", "Jeans")
+                .with(csrf())
+        )
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:/categories"));
+
+        Optional<Category> opt = categoryRepository.findOne(Example.of(new Category("Jeans")));
+
+        assertTrue(opt.isPresent());
+        assertEquals("Jeans", opt.get().getName());
     }
 }
