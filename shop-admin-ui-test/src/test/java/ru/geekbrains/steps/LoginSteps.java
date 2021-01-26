@@ -40,11 +40,35 @@ public class LoginSteps {
         webElement.sendKeys(password);
         Thread.sleep(2000);
     }
+    @When("^I provide name as \"([^\"]*)\"" )
+    public void iProvideBrandName(String name) throws Throwable {
+        WebElement webElement = webDriver.findElement(By.id("name"));
+        webElement.sendKeys(name);
+        Thread.sleep(2000);
+    }
 
     @Then("^name should be \"([^\"]*)\"$")
     public void nameShouldBe(String name) throws Throwable {
         WebElement webElement = webDriver.findElement(By.id("dd_user"));
         assertThat(webElement.getText()).isEqualTo(name);
+    }
+
+    @When("^I navigate to brand page$")
+    public void iNavigateToBrandHtmlPage() throws Throwable {
+        webDriver.get(DriverInitializer.getProperty("brand.url"));
+    }
+    @When("^I click on create brand button$")
+    public void iClickOnCreateBrandButton() throws Throwable {
+        Thread.sleep(4000);
+        WebElement webElement = webDriver.findElement(By.id("btn-create"));
+        webElement.click();
+    }
+    @When("^I click on submit brand button$")
+    public void iClickOnSubmitBrandButton() throws Throwable {
+        Thread.sleep(5000);
+        WebElement webElement = webDriver.findElement(By.id("btn-submit"));
+        webElement.click();
+        Thread.sleep(4000);
     }
 
     @Given("^any user logged in$")
