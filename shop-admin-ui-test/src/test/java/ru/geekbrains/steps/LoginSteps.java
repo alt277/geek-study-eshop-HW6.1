@@ -89,6 +89,30 @@ public class LoginSteps {
         WebElement webElement = webDriver.findElement(By.id("link-logout"));
         webElement.click();
     }
+    @When("^I provide category name as \"([^\"]*)\"" )
+    public void iProvideCategoryName(String name) throws Throwable {
+        WebElement webElement = webDriver.findElement(By.id("name"));
+        webElement.sendKeys(name);
+        Thread.sleep(2000);
+    }
+    @When("^I navigate to category page$")
+    public void iNavigateToCategoryHtmlPage() throws Throwable {
+        webDriver.get(DriverInitializer.getProperty("category.url"));
+    }
+    @When("^I click on create category button$")
+    public void iClickOnCreateCategoryButton() throws Throwable {
+        Thread.sleep(4000);
+        WebElement webElement = webDriver.findElement(By.id("btn-create-category"));
+        webElement.click();
+    }
+    @When("^I click on submit category button$")
+    public void iClickOnSubmitCategoryButton() throws Throwable {
+        Thread.sleep(5000);
+        WebElement webElement = webDriver.findElement(By.id("btn-submit-category"));
+        webElement.click();
+        Thread.sleep(4000);
+    }
+
 
     @Then("^user logged out$")
     public void userLoggedOut() {
