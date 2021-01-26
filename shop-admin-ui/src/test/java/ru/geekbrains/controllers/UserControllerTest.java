@@ -79,5 +79,4 @@ public class UserControllerTest {
         assertEquals("Ivanov", opt.get().getLastName());
     }
 
-
 }

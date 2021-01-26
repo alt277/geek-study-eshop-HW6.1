@@ -16,9 +16,29 @@
 
         <div class="card mb-4">
             <div class="card-body">
-                This is a blank page you can use as a starting point.
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4" th:each="product : ${products}">
+                        <div class="card h-100">
+                            <a th:href="@{'/product/' + ${product.id}}">
+                                <img class="card-img-top" th:src="@{'/img/' + ${product.image}}" width="253" alt="">
+                            </a>
+                            <div class="card-body">
+                                <h4 class="card-title">
+                                    <a th:href="@{'/product/' + ${product.id}}" th:text="${product.title}"></a>
+                                </h4>
+                                <h5 th:text="#{text.products.price(${product.price})}"></h5>
+                                <p class="card-text" th:text="${product.brandName}"></p>
+                            </div>
+                            <div class="card-footer">
+                                <small class="text-muted">&#9733; &#9733; &#9733; &#9733; &#9734;</small>
+                                <a class="btn btn-success" th:href="@{'/cart/add/' + ${product.id}}">В корзину</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
 </div>
 

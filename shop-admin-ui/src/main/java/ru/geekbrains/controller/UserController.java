@@ -80,6 +80,6 @@ public class UserController {
     @GetMapping("/roles")
     public String adminRolesPage(Model model) {
         model.addAttribute("activePage", "Roles");
-        return "index";
+        return "roles";
     }
 }

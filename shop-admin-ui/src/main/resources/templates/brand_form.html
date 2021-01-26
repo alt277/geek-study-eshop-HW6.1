@@ -25,13 +25,13 @@
                     <input th:type="hidden" th:field="*{id}">
                     <div class="form-group">
                         <label for="name">Brand name</label>
-                        <input th:field="*{name}" type="text" class="form-control" id="name"
+                        <input id="name"  th:field="*{name}" type="text" class="form-control"
                                placeholder="Enter brand name" required>
                     </div>
                 </div>
 
                 <div class="card-footer bg-white">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button id="btn-submit" type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
         </form>
